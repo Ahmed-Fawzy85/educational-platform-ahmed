@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Playground - Mr. Ahmed Fawzy</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- مكتبة CodeMirror وتلوين الكود -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+    
+    <!-- مكتبات الإكمال التلقائي والإغلاق التلقائي للأقواس -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+    
+    <!-- الإضافات الهامة لإغلاق الأقواس وعلامات التنصيص تلقائياً -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/anyword-hint.min.js"></script>
+
+    <!-- بيئة بايثون -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <h1>منصة التدريب البرمجي - مستر أحمد فوزي</h1>
+            <img src="qr cod.png" alt="تواصل معي" class="qr-code">
+        </div>
+        
+        <div class="toolbar">
+            <select id="languageSelect">
+                <option value="python">بايثون (Python)</option>
+                <option value="web">تصميم الويب (HTML/CSS/JS)</option>
+                <option value="js">جافا سكريبت (JS Console)</option>
+            </select>
+            
+            <button id="runBtn">تشغيل الكود (Run)</button>
+            <button id="downloadBtn">تحميل الكود</button>
+            <button id="clearBtn">مسح الكود</button>
+        </div>
+        
+        <div class="editor-container">
+            <div id="warningMessage" style="color: #900b09; font-weight: bold; margin-bottom: 10px; display: none; background: #fadbd8; padding: 10px; border-radius: 5px; border: 1px solid #e74c3c;"></div>
+            
+            <textarea id="codeEditor"></textarea>
+        </div>
+        
+        <div class="output-container">
+            <h3>النتيجة (Output):</h3>
+            <pre id="output"></pre>
+            <iframe id="webOutput" style="display: none; width: 100%; height: 300px; border: 1px solid #bdc3c7; border-radius: 5px; background: #fff;"></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

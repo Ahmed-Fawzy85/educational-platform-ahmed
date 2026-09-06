@@ -1,0 +1,114 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.header-container h1 {
+    margin-bottom: 0;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+.qr-code {
+    width: 65px; 
+    height: 65px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: 2px solid #2c3e50;
+    cursor: pointer;
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.toolbar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#runBtn { background-color: #27ae60; }
+#runBtn:hover { background-color: #219150; }
+
+#downloadBtn { background-color: #2980b9; }
+#downloadBtn:hover { background-color: #2471a3; }
+
+#clearBtn { background-color: #e74c3c; }
+#clearBtn:hover { background-color: #c0392b; }
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-family: inherit;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+/* --- التعديل الحاسم والصارم لمسافات الأسطر في CodeMirror --- */
+.CodeMirror {
+    height: 320px !important;
+    direction: ltr;
+    text-align: left;
+    font-size: 15px !important;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+/* إجبار كل سطر داخل المحرر على التقارب الشديد مثل VS Code */
+.CodeMirror pre.CodeMirror-line, 
+.CodeMirror pre.CodeMirror-line-like {
+    line-height: 1.1 !important;
+    padding: 0 !important;
+}
+
+.CodeMirror-lines {
+    padding: 4px 0 !important;
+}
+
+/* شاشات النتائج (Output) */
+pre {
+    background: #1e1e1e;
+    color: #00ff00;
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 120px;
+    overflow-x: auto;
+    direction: ltr;
+    text-align: left;
+    font-size: 16px;
+}

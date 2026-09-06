@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة مستر أحمد فوزي التعليمية</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- أيقونات FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- خط تجوال العربي الاحترافي -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ================= الواجهة الرئيسية ================= -->
+  <div id="home-view" class="view-section active">
+    <div class="container main-layout">
+      
+      <!-- الجانب الأيمن: كارت المستر والتواصل -->
+      <aside class="profile-card">
+        <div class="avatar-wrapper">
+          <img src="profile.jpg" alt="مستر أحمد فوزي" class="teacher-img" onerror="this.src='https://via.placeholder.com/160?text=Mr.+Ahmed'">
+        </div>
+        <h2 class="teacher-name">مستر أحمد فوزي</h2>
+        <p class="teacher-bio">البرمجة والذكاء الاصطناعي</p>
+
+        <div class="social-actions">
+          <!-- رابط منصة التدريب البرمجي في الفولدر المجاور -->
+          <a href="Code_Playground/index.html" class="btn btn-code">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>منصة التدريب البرمجي</span>
+          </a>
+
+
+          <!-- رابط قناة اليوتيوب المباشر -->
+<a href="https://www.youtube.com/@MR.ahmed_fawzy" target="_blank" class="btn btn-youtube">
+  <i class="fa-brands fa-youtube"></i>
+  <span>قناة اليوتيوب</span>
+</a>
+
+          <!-- رابط الواتساب: استبدل 201000000000 برقمك مباشرة -->
+          <a href="https://wa.me/201121225111" target="_blank" class="btn btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>تواصل واتساب</span>
+          </a>
+          <!-- زر بوابة مدرسة 6 أكتوبر الثانوية العسكرية بنين -->
+<a href="https://facebook.com" target="_blank" class="btn btn-school">
+  <i class="fa-solid fa-school"></i>
+  <span>مدرسة 6 أكتوبر الثانوية العسكرية بنين</span>
+</a>
+
+        </div>
+      </aside>
+
+      <!-- الجانب الأيسر: المراحل الدراسية -->
+      <main class="stages-selection">
+        <header class="platform-header">
+          <h1>منصة مستر أحمد فوزي التعليمية</h1>
+          <p class="subtitle">اختر مرحلتك الدراسية للوصول إلى الملازم، شروحات الفيديو، وجداول الحصص والتعليمات</p>
+        </header>
+
+        <div class="stage-cards">
+          <!-- كارت الصف الأول -->
+          <div class="stage-btn" onclick="openGrade('grade1', 'الصف الأول الثانوي')">
+            <div class="stage-icon">
+              <i class="fa-solid fa-book-open-reader"></i>
+            </div>
+            <h3>الصف الأول الثانوي</h3>
+            <span class="badge">دخول المحتوى <i class="fa-solid fa-arrow-left"></i></span>
+          </div>
+
+          <!-- كارت الصف الثاني -->
+          <div class="stage-btn" onclick="openGrade('grade2', 'الصف الثاني الثانوي')">
+            <div class="stage-icon">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3>الصف الثاني الثانوي</h3>
+            <span class="badge">دخول المحتوى <i class="fa-solid fa-arrow-left"></i></span>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+
+  <!-- ================= صفحة محتوى المرحلة ================= -->
+  <div id="grade-view" class="view-section">
+    <div class="container">
+      
+      <!-- شريط التنقل والرجوع -->
+      <div class="grade-nav">
+        <button class="btn btn-back" onclick="goHome()">
+          <i class="fa-solid fa-house"></i>
+          <span>الرئيسية</span>
+        </button>
+        <h2 id="current-grade-title">اسم المرحلة</h2>
+      </div>
+
+      <!-- الأقسام الثلاثة داخل المرحلة -->
+      <div class="sections-grid">
+        <div class="section-card active" onclick="switchContent('pdf-box', this)">
+          <i class="fa-solid fa-file-pdf"></i>
+          <h3>ملفات وملازم (PDF)</h3>
+        </div>
+        <div class="section-card" onclick="switchContent('video-box', this)">
+          <i class="fa-solid fa-circle-play"></i>
+          <h3>فيديوهات الشرح</h3>
+        </div>
+        <div class="section-card" onclick="switchContent('instructions-box', this)">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <h3>التعليمات والجدول</h3>
+        </div>
+      </div>
+
+      <!-- محتوى القسم النشط -->
+      <div class="content-display-area">
+        
+        <!-- قسم الـ PDF من Google Drive -->
+        <div id="pdf-box" class="content-tab active">
+          <div class="frame-container">
+            <iframe id="drive-frame" src="" frameborder="0"></iframe>
+          </div>
+        </div>
+
+        <!-- قسم الفيديوهات -->
+        <div id="video-box" class="content-tab">
+          <div class="video-grid" id="video-list"></div>
+        </div>
+
+        <!-- قسم التعليمات والمواعيد -->
+        <div id="instructions-box" class="content-tab">
+          <div class="instructions-card" id="instructions-text"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <p>جميع الحقوق محفوظة © منصة مستر أحمد فوزي</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
