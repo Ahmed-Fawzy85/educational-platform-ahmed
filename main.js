@@ -1,13 +1,10 @@
 // ================= بيانات المواد والمجلدات =================
-// ضع معرفات مجلدات Google Drive الخاصة بك ومقاطع اليوتيوب هنا
 const gradeData = {
   grade1: {
     title: "الصف الأول الثانوي",
-    // استبدل النص التالي بمعرف مجلد درايف للصف الأول (Folder ID)
     driveFolderId: "1RnWUt-ZLebrfpfWFzkQjI_TL3nmhlctc", 
-    videos: [
-      { title: "المحاضرة الأولى: مقدمة البرمجة والتفكير المنطقي", youtubeId: "dQw4w9WgXcQ" }
-    ],
+    // رابط قائمة تشغيل الصف الأول على قناتك (يمكنك تغييره لرابط الـ playlist المباشر لاحقاً)
+    playlistUrl: "https://www.youtube.com/@MR.ahmed_fawzy/playlists",
     instructions: `
       <h3 style="color: #1e3a8a; margin-bottom: 12px;">📌 تعليمات ومواعيد الصف الأول الثانوي:</h3>
       <ul style="margin-right: 20px; line-height: 2;">
@@ -19,11 +16,9 @@ const gradeData = {
   },
   grade2: {
     title: "الصف الثاني الثانوي",
-    // استبدل النص التالي بمعرف مجلد درايف للصف الثاني (Folder ID)
     driveFolderId: "1ocZmlCXz2j9T8MV6vF_2JF3ZxFAm6BQb",
-    videos: [
-      { title: "المحاضرة الأولى: مراجعة الأساسيات والذكاء الاصطناعي", youtubeId: "dQw4w9WgXcQ" }
-    ],
+    // رابط قائمة تشغيل الصف الثاني على قناتك
+    playlistUrl: "https://www.youtube.com/@MR.ahmed_fawzy/playlists",
     instructions: `
       <h3 style="color: #1e3a8a; margin-bottom: 12px;">📌 تعليمات ومواعيد الصف الثاني الثانوي:</h3>
       <ul style="margin-right: 20px; line-height: 2;">
@@ -50,17 +45,38 @@ function openGrade(gradeKey, gradeTitle) {
   const driveUrl = `https://drive.google.com/embeddedfolderview?id=${data.driveFolderId}#grid`;
   document.getElementById('drive-frame').src = driveUrl;
 
-  // تعبئة فيديوهات اليوتيوب
+  // عرض زر كارت قائمة التشغيل لليوتيوب بدلاً من المشغل القديم
   const videoContainer = document.getElementById('video-list');
-  videoContainer.innerHTML = '';
-  data.videos.forEach(vid => {
-    videoContainer.innerHTML += `
-      <div class="video-item">
-        <iframe src="https://www.youtube.com/embed/${vid.youtubeId}" frameborder="0" allowfullscreen></iframe>
-        <p>${vid.title}</p>
+  videoContainer.innerHTML = `
+    <div style="text-align: center; padding: 40px 20px; width: 100%; background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+      <div style="font-size: 3.5rem; color: #dc2626; margin-bottom: 15px;">
+        <i class="fa-brands fa-youtube"></i>
       </div>
-    `;
-  });
+      <h3 style="font-size: 1.3rem; color: #0f172a; margin-bottom: 10px; font-weight: bold;">
+        قائمة محاضرات وشروحات ${data.title}
+      </h3>
+      <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6;">
+        اضغط على الزر لمشاهدة جميع فيديوهات الشرح والمراجعات بالترتيب على القناة الرسمية
+      </p>
+      <a href="${data.playlistUrl}" target="_blank" style="
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #dc2626;
+        color: #ffffff;
+        padding: 12px 28px;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 1rem;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        transition: 0.2s;
+      ">
+        <i class="fa-solid fa-play"></i>
+        <span>فتح قائمة الفيديوهات على YouTube</span>
+      </a>
+    </div>
+  `;
 
   // تعبئة التعليمات
   document.getElementById('instructions-text').innerHTML = data.instructions;
