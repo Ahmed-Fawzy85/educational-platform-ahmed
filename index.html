@@ -31,24 +31,23 @@
             <span>منصة التدريب البرمجي</span>
           </a>
 
-
           <!-- رابط قناة اليوتيوب المباشر -->
-<a href="https://www.youtube.com/@MR.ahmed_fawzy" target="_blank" class="btn btn-youtube">
-  <i class="fa-brands fa-youtube"></i>
-  <span>قناة اليوتيوب</span>
-</a>
+          <a href="https://www.youtube.com/@MR.ahmed_fawzy" target="_blank" class="btn btn-youtube">
+            <i class="fa-brands fa-youtube"></i>
+            <span>قناة اليوتيوب</span>
+          </a>
 
-          <!-- رابط الواتساب: استبدل 201000000000 برقمك مباشرة -->
+          <!-- رابط الواتساب -->
           <a href="https://wa.me/201121225111" target="_blank" class="btn btn-whatsapp">
             <i class="fa-brands fa-whatsapp"></i>
             <span>تواصل واتساب</span>
           </a>
-          <!-- زر بوابة مدرسة 6 أكتوبر الثانوية العسكرية بنين -->
-<a href="https://facebook.com" target="_blank" class="btn btn-school">
-  <i class="fa-solid fa-school"></i>
-  <span>مدرسة 6 أكتوبر الثانوية العسكرية بنين</span>
-</a>
 
+          <!-- زر بوابة مدرسة 6 أكتوبر الثانوية العسكرية بنين -->
+          <a href="https://facebook.com" target="_blank" class="btn btn-school">
+            <i class="fa-solid fa-school"></i>
+            <span>مدرسة 6 أكتوبر الثانوية العسكرية بنين</span>
+          </a>
         </div>
       </aside>
 
@@ -83,7 +82,6 @@
     </div>
   </div>
 
-
   <!-- ================= صفحة محتوى المرحلة ================= -->
   <div id="grade-view" class="view-section">
     <div class="container">
@@ -97,7 +95,7 @@
         <h2 id="current-grade-title">اسم المرحلة</h2>
       </div>
 
-      <!-- الأقسام الثلاثة داخل المرحلة -->
+      <!-- الأقسام الأربعة داخل المرحلة -->
       <div class="sections-grid">
         <div class="section-card active" onclick="switchContent('pdf-box', this)">
           <i class="fa-solid fa-file-pdf"></i>
@@ -106,6 +104,10 @@
         <div class="section-card" onclick="switchContent('video-box', this)">
           <i class="fa-solid fa-circle-play"></i>
           <h3>فيديوهات الشرح</h3>
+        </div>
+        <div class="section-card" onclick="switchContent('quiz-box', this)">
+          <i class="fa-solid fa-clipboard-check"></i>
+          <h3>حل الاختبارات والواجبات</h3>
         </div>
         <div class="section-card" onclick="switchContent('instructions-box', this)">
           <i class="fa-solid fa-clipboard-list"></i>
@@ -126,6 +128,13 @@
         <!-- قسم الفيديوهات -->
         <div id="video-box" class="content-tab">
           <div class="video-grid" id="video-list"></div>
+        </div>
+
+        <!-- قسم الاختبارات الذاتية التصحيح -->
+        <div id="quiz-box" class="content-tab">
+          <div class="frame-container">
+            <iframe id="quiz-frame" src="" frameborder="0" width="100%" height="800" style="border-radius: 12px; min-height: 80vh;">جارٍ تحميل الاختبار...</iframe>
+          </div>
         </div>
 
         <!-- قسم التعليمات والمواعيد -->
