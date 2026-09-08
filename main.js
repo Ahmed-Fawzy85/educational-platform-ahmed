@@ -3,8 +3,8 @@ const gradeData = {
   grade1: {
     title: "الصف الأول الثانوي",
     driveFolderId: "1RnWUt-ZLebrfpfWFzkQjI_TL3nmhlctc", 
-    // رابط قائمة تشغيل الصف الأول على قناتك (يمكنك تغييره لرابط الـ playlist المباشر لاحقاً)
     playlistUrl: "https://www.youtube.com/@MR.ahmed_fawzy/playlists",
+    quizUrl: "", // سنضيف اختبار الصف الأول هنا فور تجهيزه
     instructions: `
       <h3 style="color: #1e3a8a; margin-bottom: 12px;">📌 تعليمات ومواعيد الصف الأول الثانوي:</h3>
       <ul style="margin-right: 20px; line-height: 2;">
@@ -17,8 +17,9 @@ const gradeData = {
   grade2: {
     title: "الصف الثاني الثانوي",
     driveFolderId: "1ocZmlCXz2j9T8MV6vF_2JF3ZxFAm6BQb",
-    // رابط قائمة تشغيل الصف الثاني على قناتك
     playlistUrl: "https://www.youtube.com/@MR.ahmed_fawzy/playlists",
+    // الرابط النهائي المعتمد لاختبار الدرس الأول للصف الثاني
+    quizUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdmnO4v6mwnEhcLsTulYWTGA65TgxGGsf5eObvrFzljjIzEng/viewform?embedded=true",
     instructions: `
       <h3 style="color: #1e3a8a; margin-bottom: 12px;">📌 تعليمات ومواعيد الصف الثاني الثانوي:</h3>
       <ul style="margin-right: 20px; line-height: 2;">
@@ -41,11 +42,22 @@ function openGrade(gradeKey, gradeTitle) {
 
   document.getElementById('current-grade-title').innerText = gradeTitle;
 
-  // تضمين مجلد درايف
+  // تضمين مجلد درايف للملازم
   const driveUrl = `https://drive.google.com/embeddedfolderview?id=${data.driveFolderId}#grid`;
   document.getElementById('drive-frame').src = driveUrl;
 
-  // عرض زر كارت قائمة التشغيل لليوتيوب بدلاً من المشغل القديم
+  // تضمين رابط الاختبار وتحديث الزر الخارجي المباشر
+  const quizFrame = document.getElementById('quiz-frame');
+  const quizBtn = document.getElementById('quiz-direct-link');
+
+  if (quizFrame) {
+    quizFrame.src = data.quizUrl || "";
+  }
+  if (quizBtn) {
+    quizBtn.href = data.quizUrl ? data.quizUrl.replace('?embedded=true', '') : "#";
+  }
+
+  // كارت قائمة اليوتيوب
   const videoContainer = document.getElementById('video-list');
   videoContainer.innerHTML = `
     <div style="text-align: center; padding: 40px 20px; width: 100%; background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
@@ -81,7 +93,7 @@ function openGrade(gradeKey, gradeTitle) {
   // تعبئة التعليمات
   document.getElementById('instructions-text').innerHTML = data.instructions;
 
-  // تفعيل تبويب الـ PDF أولاً كافتراضي
+  // فتح تبويب الملازم أولاً كافتراضي
   const tabs = document.querySelectorAll('.section-card');
   switchContent('pdf-box', tabs[0]);
 }
@@ -91,9 +103,12 @@ function goHome() {
   document.getElementById('grade-view').classList.remove('active');
   document.getElementById('home-view').classList.add('active');
   document.getElementById('drive-frame').src = "";
+  
+  const quizFrame = document.getElementById('quiz-frame');
+  if (quizFrame) quizFrame.src = "";
 }
 
-// التبديل بين التبويبات (ملازم / فيديوهات / تعليمات)
+// التبديل بين التبويبات
 function switchContent(contentId, clickedCard) {
   document.querySelectorAll('.section-card').forEach(card => card.classList.remove('active'));
   if (clickedCard) clickedCard.classList.add('active');
